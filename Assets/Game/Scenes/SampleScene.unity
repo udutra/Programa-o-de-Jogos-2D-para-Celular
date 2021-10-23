@@ -319,9 +319,11 @@ GameObject:
   - component: {fileID: 429510012}
   - component: {fileID: 429510010}
   - component: {fileID: 429510015}
+  - component: {fileID: 429510017}
   - component: {fileID: 429510014}
   - component: {fileID: 429510011}
   - component: {fileID: 429510016}
+  - component: {fileID: 429510018}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -362,8 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f086c649c75fa5d4fa343c5e3faab972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crouchedSprite: {fileID: 21300000, guid: bd35fa3b066b8a849bca1c29918e2796, type: 3}
-  idleSprite: {fileID: 21300000, guid: df72d97bae32378418e06baa2e1be3ef, type: 3}
   cameraTarget: {fileID: 382908571}
   cameraTargetOffsetX: 2
   cameraTargetflipSpeed: 5
@@ -452,7 +452,7 @@ MonoBehaviour:
   jumpPeakTime: 0.4
   jumpAbortDecceleration: 100
   crouchCapsuleHeightPercent: 0.61
-  crouchGroundSpeedPercent: 0.3
+  crouchGroundSpeedPercent: 0
   groundedLayerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -483,6 +483,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 495c155f9b59e7b418108eb2f68a3bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &429510017
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429510009}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 547737ca5b2e26240a024a0e9233d705, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &429510018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429510009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664a4e0bf91f73644be869395413462c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &486120037

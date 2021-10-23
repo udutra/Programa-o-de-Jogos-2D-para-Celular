@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     private PlayerInput playerInput;
 
-    public Sprite crouchedSprite, idleSprite;
-
     [Header("Camera")]
     public Transform cameraTarget;
     [Range(0f, 5.0f)]
@@ -55,16 +53,14 @@ public class PlayerController : MonoBehaviour {
         if(playerInput.IsCrouchButtonDown()) {
             playerMovement.Crouch();
 
-            //TODO: Remover quando adicionar animação
-            spriteRenderer.sprite = crouchedSprite;
+
         }
 
         //Levantar
         else if(playerInput.IsCrouchButtonUp()) {
             playerMovement.UnCrouch();
 
-            //TODO: Remover quando adicionar animação
-            spriteRenderer.sprite = idleSprite;
+
         }
     }
 
