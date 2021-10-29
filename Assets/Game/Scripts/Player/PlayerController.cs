@@ -5,12 +5,12 @@ using Platformer2D.Character;
 
 
 [RequireComponent(typeof(CharacterMovement2D))]
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(CharacterFacing2D))]
 public class PlayerController : MonoBehaviour {
     private CharacterMovement2D playerMovement;
-    private SpriteRenderer spriteRenderer;
     private PlayerInput playerInput;
+    private CharacterFacing2D playerFacing;
 
     [Header("Camera")]
     public Transform cameraTarget;
@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour {
 
     private void Start() {
         playerMovement = GetComponent<CharacterMovement2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         playerInput = GetComponent<PlayerInput>();
+        playerFacing = GetComponent<CharacterFacing2D>();
     }
 
     private void Update() {
@@ -33,12 +33,7 @@ public class PlayerController : MonoBehaviour {
         Vector2 movimentInput = playerInput.GetMovementInput();
         playerMovement.ProcessMovementInput(movimentInput);
 
-        if(movimentInput.x > 0) {
-            spriteRenderer.flipX = false;
-        }
-        else if(movimentInput.x < 0) {
-            spriteRenderer.flipX = true;
-        }
+        playerFacing.UpdateFacing(movimentInput);
 
         //Pulo
         if(playerInput.IsJumpButtonDown()) {
@@ -52,21 +47,17 @@ public class PlayerController : MonoBehaviour {
         //Agachar
         if(playerInput.IsCrouchButtonDown()) {
             playerMovement.Crouch();
-
-
         }
 
         //Levantar
         else if(playerInput.IsCrouchButtonUp()) {
             playerMovement.UnCrouch();
-
-
         }
     }
 
     private void FixedUpdate() {
         //Ajuste da camera
-        bool isFacingRight = spriteRenderer.flipX == false;
+        bool isFacingRight = playerFacing.IsFacingRight();
         float targetOffsetX = isFacingRight ? cameraTargetOffsetX : -cameraTargetOffsetX;
         float currentOffsetX = Mathf.Lerp(cameraTarget.localPosition.x, targetOffsetX, Time.fixedDeltaTime * cameraTargetflipSpeed);
 

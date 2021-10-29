@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Platformer2D.Character;
 
-public class PlayerAnimationController : MonoBehaviour {
+public class CharacterAnimationController : MonoBehaviour {
 
     private Animator animator;
     private CharacterMovement2D playerMovement;
