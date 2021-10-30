@@ -10,6 +10,7 @@ public class EnemyAIController : MonoBehaviour {
     private CharacterMovement2D enemyMovement;
     private CharacterFacing2D enemyFacing2D;
     public Vector2 movementInput;
+    public bool isChasing;
 
     private void Start() {
         enemyMovement = GetComponent<CharacterMovement2D>();
