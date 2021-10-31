@@ -321,10 +321,10 @@ GameObject:
   - component: {fileID: 429510015}
   - component: {fileID: 429510017}
   - component: {fileID: 429510011}
-  - component: {fileID: 429510016}
   - component: {fileID: 429510014}
-  - component: {fileID: 429510018}
   - component: {fileID: 429510019}
+  - component: {fileID: 429510018}
+  - component: {fileID: 429510016}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 429510009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 664a4e0bf91f73644be869395413462c, type: 3}
+  m_Script: {fileID: 11500000, guid: 18b3195ac7671284db791a737ceb7380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &429510019
@@ -5464,8 +5464,8 @@ GameObject:
   - component: {fileID: 1174969714}
   - component: {fileID: 1174969713}
   - component: {fileID: 1174969718}
-  - component: {fileID: 1174969717}
   - component: {fileID: 1174969719}
+  - component: {fileID: 1174969717}
   - component: {fileID: 1174969721}
   - component: {fileID: 1174969722}
   - component: {fileID: 1174969723}
@@ -5665,7 +5665,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1174969712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 664a4e0bf91f73644be869395413462c, type: 3}
+  m_Script: {fileID: 11500000, guid: cf3bb3c3af8266045903ee91c1e92580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1174969722
