@@ -13,13 +13,13 @@ public class PlayerController : MonoBehaviour {
     private CharacterFacing2D playerFacing;
 
     [Header("Camera")]
-    public Transform cameraTarget;
+    [SerializeField] private Transform cameraTarget;
     [Range(0f, 5.0f)]
-    public float cameraTargetOffsetX;
+    [SerializeField] private float cameraTargetOffsetX;
     [Range(0.5f, 50.0f)]
-    public float  cameraTargetflipSpeed;
+    [SerializeField] private float  cameraTargetflipSpeed;
     [Range(0f, 5.0f)]
-    public float characterSpeedInfluence;
+    [SerializeField] private float characterSpeedInfluence;
 
     private void Start() {
         playerMovement = GetComponent<CharacterMovement2D>();

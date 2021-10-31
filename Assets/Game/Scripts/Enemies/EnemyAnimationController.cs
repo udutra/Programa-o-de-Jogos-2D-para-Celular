@@ -8,6 +8,6 @@ public class EnemyAnimationController : CharacterAnimationController {
 
     protected override void Update() {
         base.Update();
-        animator.SetBool(CharacterMovementAnimationKeys.IsChasing, enemyAIController.isChasing);
+        animator.SetBool(CharacterMovementAnimationKeys.IsChasing, enemyAIController.IsChasing);
     }
 }
