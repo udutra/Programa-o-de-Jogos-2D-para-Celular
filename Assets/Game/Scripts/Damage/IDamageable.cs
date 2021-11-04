@@ -1,9 +1,13 @@
 using System;
 
 public interface IDamageable {
-    void TakeDamage(int damage);
+    
     event Action DeathEvent;
-    bool IsDead {
+    bool IsAlive { get; }
+    void TakeDamage(int damage);
+    Action OnDeath { get; set; }
+
+    /*bool IsDead {
         get;
-    }
+    }*/
 }

@@ -1,29 +1,22 @@
+using UnityEngine;
+
+[RequireComponent(typeof(IDamageable))]
+[RequireComponent(typeof(PlayerController))]
 public class PlayerAnimationController : CharacterAnimationController {
 
-    private IDamageable damageable;
+    private PlayerController player;
 
     protected override void Awake() {
         base.Awake();
-        damageable = GetComponent<IDamageable>();
-        if(damageable != null) {
-            damageable.DeathEvent += OnDeath;
-        }
+        player = GetComponent<PlayerController>();
+        
     }
 
     protected override void Update() {
         base.Update();
-        animator.SetBool(CharacterMovementAnimationKeys.IsCrouching, characterMovement.IsCrouching);
-        animator.SetFloat(CharacterMovementAnimationKeys.VerticalSpeed, characterMovement.CurrentVelocity.y / characterMovement.JumpSpeed);
-        animator.SetBool(CharacterMovementAnimationKeys.IsGrounded, characterMovement.IsGrounded);
-    }
-
-    private void OnDestroy() {
-        if(damageable != null) {
-            damageable.DeathEvent -= OnDeath;
-        }
-    }
-
-    private void OnDeath() {
-        animator.SetTrigger(CharacterMovementAnimationKeys.Dead);
+        animator.SetBool(CharacterAnimationKeys.IsCrouching, characterMovement.IsCrouching);
+        animator.SetFloat(CharacterAnimationKeys.VerticalSpeed, characterMovement.CurrentVelocity.y / characterMovement.JumpSpeed);
+        animator.SetBool(CharacterAnimationKeys.IsGrounded, characterMovement.IsGrounded);
+        animator.SetBool(CharacterAnimationKeys.IsAttack, player.Weapon.IsAttacking);
     }
 }

@@ -35,7 +35,7 @@ public class IsTargetVisible : GOCondition {
         //Todo: nao chamar getComponent no Update
         IDamageable damageable = target.GetComponent<IDamageable>();
         if(damageable != null) {
-            return !damageable.IsDead;
+            return !damageable.IsAlive;
         }
         return true;
     }
