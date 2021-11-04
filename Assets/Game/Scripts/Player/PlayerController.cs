@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using Platformer2D.Character;
 
-
 [RequireComponent(typeof(CharacterMovement2D))]
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(CharacterFacing2D))]
+[RequireComponent(typeof(IDamageable))]
 public class PlayerController : MonoBehaviour {
     private CharacterMovement2D playerMovement;
     private PlayerInput playerInput;
     private CharacterFacing2D playerFacing;
+    private IDamageable damageable;
 
     [Header("Camera")]
     [SerializeField] private Transform cameraTarget;
     [Range(0f, 5.0f)]
     [SerializeField] private float cameraTargetOffsetX;
     [Range(0.5f, 50.0f)]
-    [SerializeField] private float  cameraTargetflipSpeed;
+    [SerializeField] private float cameraTargetflipSpeed;
     [Range(0f, 5.0f)]
     [SerializeField] private float characterSpeedInfluence;
 
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour {
         playerMovement = GetComponent<CharacterMovement2D>();
         playerInput = GetComponent<PlayerInput>();
         playerFacing = GetComponent<CharacterFacing2D>();
+        damageable = GetComponent<IDamageable>();
+        damageable.DeathEvent += OnDeath;
     }
 
     private void Update() {
@@ -64,5 +67,18 @@ public class PlayerController : MonoBehaviour {
         currentOffsetX += playerMovement.CurrentVelocity.x * Time.fixedDeltaTime * characterSpeedInfluence;
 
         cameraTarget.localPosition = new Vector3(currentOffsetX, cameraTarget.localPosition.y, cameraTarget.localPosition.z);
+    }
+
+    private void OnDestroy() {
+        if(damageable != null) {
+            damageable.DeathEvent -= OnDeath;
+        }
+    }
+
+    private void OnDeath() {
+        //Morrer assim que a gente tomar qualquer dano
+        playerMovement.StopImmediately();
+        enabled = false;
+        //Debug.Log("Tomei Dano");
     }
 }
